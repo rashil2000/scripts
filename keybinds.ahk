@@ -25,9 +25,10 @@ Return
     }
 Return
 
-; Win+Backspace -> Visual Studio Code
+; Win+Backspace -> Neovim
 #Backspace::
-    Run, C:\Users\%A_UserName%\AppData\Local\Programs\Microsoft VS Code\code.exe
+    Sleep, 150
+    Run, C:\Users\%A_UserName%\AppData\Local\Microsoft\WindowsApps\wt.exe -p Neovim
 Return
 
 ; Win+N -> Microsoft Edge
