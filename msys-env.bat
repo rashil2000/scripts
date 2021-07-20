@@ -89,9 +89,6 @@ if "%MSYSTEM%"=="MINGW32" (
 if "%MSYSTEM%"=="MSYS" (
     set "PATH=%MSYS2_PATH%;%Msys2Root%\opt\bin;%PATH%"
     set PKG_CONFIG_PATH=%Msys2Root%\usr\lib\pkgconfig;%Msys2Root%\usr\share\pkgconfig;%Msys2Root%\lib\pkgconfig
-) else if "%MSYSTEM%"=="UCRT64" (
-    set "PATH=%MSYS2_PATH%;%Msys2Root%\opt\bin;%PATH%"
-    set PKG_CONFIG_PATH=%Msys2Root%\usr\lib\pkgconfig;%Msys2Root%\usr\share\pkgconfig;%Msys2Root%\lib\pkgconfig
 ) else (
     set MINGW_MOUNT_POINT=%MINGW_PREFIX%
     set "PATH=%MINGW_PREFIX%\bin;%MSYS2_PATH%;%PATH%"
@@ -100,6 +97,7 @@ if "%MSYSTEM%"=="MSYS" (
     set MANPATH=%MINGW_PREFIX%\local\man;%MINGW_PREFIX%\share\man;%MANPATH%
 )
 
+set CONFIG_SITE=%Msys2Root%\etc\config.site
 set SYSCONFDIR=%Msys2Root%\etc
 
 :: TMP and TEMP as defined in the Windows environment must be kept

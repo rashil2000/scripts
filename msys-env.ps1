@@ -93,7 +93,7 @@ switch ($Env:MSYSTEM) {
 }
 
 switch ($Env:MSYSTEM) {
-  { $PSItem -like "MINGW*" -or $PSItem -like "CLANG*" } {
+  { $PSItem -like "MINGW*" -or $PSItem -like "CLANG*" -or $PSItem -like "UCRT*" } {
     $Env:MINGW_MOUNT_POINT = $Env:MINGW_PREFIX
     $Env:PATH = "$Env:MINGW_MOUNT_POINT\bin;$Env:MSYS2_PATH;$Env:PATH"
     $Env:PKG_CONFIG_PATH = "$Env:MINGW_MOUNT_POINT\lib\pkgconfig;$Env:MINGW_MOUNT_POINT\share\pkgconfig"
@@ -106,6 +106,7 @@ switch ($Env:MSYSTEM) {
   }
 }
 
+$Env:CONFIG_SITE = "$Msys2Root\etc\config.site"
 $Env:SYSCONFDIR = "$Msys2Root\etc"
 
 # TMP and TEMP as defined in the Windows environment must be kept

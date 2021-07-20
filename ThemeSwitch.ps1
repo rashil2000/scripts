@@ -13,10 +13,9 @@ public class DeskWall
 
 $ThemeRegistry = "HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\Themes\Personalize"
 $WTSettings = "$Env:LOCALAPPDATA\Packages\Microsoft.WindowsTerminalPreview_8wekyb3d8bbwe\LocalState\settings.json"
-$VSettings = "$Env:LOCALAPPDATA\nvim\init.vim"
-$VSCSettings = "$Env:APPDATA\Code\User\settings.json"
 $NPPSettings = "$Env:APPDATA\Notepad++\config.xml"
 $MSettings = "$Env:USERPROFILE\.config\mintty\config"
+$GSettings = "$Env:USERPROFILE\.gitconfig"
 
 $CheckWall = Get-ItemProperty `
   -Path 'HKCU:\Control Panel\Desktop\' `
@@ -65,21 +64,12 @@ if (!$CheckTheme.AppsUseLightTheme) {
     -Value (Get-Content $WTSettings).Replace('"colorScheme": "Bluloco Dark"', '"colorScheme": "Bluloco Light"')
   Set-Content `
     -Path $WTSettings `
-    -Value (Get-Content $WTSettings).Replace('"colorScheme": "Night Owl"', '"colorScheme": "Light Owl"')
-
-  # Visual Studio Code
-  Set-Content `
-    -Path $VSCSettings `
-    -Value (Get-Content $VSCSettings).Replace('"workbench.colorTheme": "Bluloco Dark Italic"', '"workbench.colorTheme": "Bluloco Light Italic"')
-  Set-Content `
-    -Path $VSCSettings `
-    -Value (Get-Content $VSCSettings).Replace('"vscode_vibrancy.theme": "Dark (Only Subbar)"', '"vscode_vibrancy.theme": "Light (Only Subbar)"')
+    -Value (Get-Content $WTSettings).Replace('"colorScheme": "Ayu Dark"', '"colorScheme": "Ayu Light"')
 
   # Notepad++
   Set-Content `
     -Path $NPPSettings `
     -Value (Get-Content $NPPSettings).Replace("<GUIConfig name=`"stylerTheme`" path=`"$Env:APPDATA\Notepad++\themes\DarkModeDefault.xml`" />", "<GUIConfig name=`"stylerTheme`" path=`"$Env:APPDATA\Notepad++\stylers.xml`" />")
-
   Set-Content `
     -Path $NPPSettings `
     -Value (Get-Content $NPPSettings).Replace('<GUIConfig name="DarkMode" enable="yes" enableExperimental="yes" enableMenubar="yes" enableScrollbarHack="yes" />', '<GUIConfig name="DarkMode" enable="no" enableExperimental="no" enableMenubar="no" enableScrollbarHack="no" />')
@@ -89,13 +79,10 @@ if (!$CheckTheme.AppsUseLightTheme) {
     -Path $MSettings `
     -Value (Get-Content $MSettings).Replace("ThemeFile=windows10", "ThemeFile=google-light")
 
-  # VIm
+  # Git
   Set-Content `
-    -Path $VSettings `
-    -Value (Get-Content $VSettings).Replace('ayucolor="dark"', 'ayucolor="light"')
-  Set-Content `
-    -Path $VSettings `
-    -Value (Get-Content $VSettings).Replace('g:airline_theme="ayu_dark"', 'g:airline_theme="ayu_light"')
+    -Path $GSettings `
+    -Value (Get-Content $GSettings).Replace("decorations calochortus-lyallii", "decorations hoopoe")
 }
 else {
   # Wallpaper
@@ -137,21 +124,12 @@ else {
     -Value (Get-Content $WTSettings).Replace('"colorScheme": "Bluloco Light"', '"colorScheme": "Bluloco Dark"')
   Set-Content `
     -Path $WTSettings `
-    -Value (Get-Content $WTSettings).Replace('"colorScheme": "Light Owl"', '"colorScheme": "Light Owl"')
-
-  # Visual Studio Code
-  Set-Content `
-    -Path $VSCSettings `
-    -Value (Get-Content $VSCSettings).Replace('"workbench.colorTheme": "Bluloco Light Italic"', '"workbench.colorTheme": "Bluloco Dark Italic"')
-  Set-Content `
-    -Path $VSCSettings `
-    -Value (Get-Content $VSCSettings).Replace('"vscode_vibrancy.theme": "Light (Only Subbar)"', '"vscode_vibrancy.theme": "Dark (Only Subbar)"')
+    -Value (Get-Content $WTSettings).Replace('"colorScheme": "Ayu Light"', '"colorScheme": "Ayu Dark"')
 
   # Notepad++
   Set-Content `
     -Path $NPPSettings `
     -Value (Get-Content $NPPSettings).Replace("<GUIConfig name=`"stylerTheme`" path=`"$Env:APPDATA\Notepad++\stylers.xml`" />", "<GUIConfig name=`"stylerTheme`" path=`"$Env:APPDATA\Notepad++\themes\DarkModeDefault.xml`" />")
-
   Set-Content `
     -Path $NPPSettings `
     -Value (Get-Content $NPPSettings).Replace('<GUIConfig name="DarkMode" enable="no" enableExperimental="no" enableMenubar="no" enableScrollbarHack="no" />', '<GUIConfig name="DarkMode" enable="yes" enableExperimental="yes" enableMenubar="yes" enableScrollbarHack="yes" />')
@@ -161,11 +139,8 @@ else {
     -Path $MSettings `
     -Value (Get-Content $MSettings).Replace("ThemeFile=google-light", "ThemeFile=windows10")
 
-  # VIm
+  # Git
   Set-Content `
-    -Path $VSettings `
-    -Value (Get-Content $VSettings).Replace('ayucolor="light"', 'ayucolor="dark"')
-  Set-Content `
-    -Path $VSettings `
-    -Value (Get-Content $VSettings).Replace('g:airline_theme="ayu_light"', 'g:airline_theme="ayu_dark"')
+    -Path $GSettings `
+    -Value (Get-Content $GSettings).Replace("decorations hoopoe", "decorations calochortus-lyallii")
 }
