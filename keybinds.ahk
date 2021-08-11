@@ -28,7 +28,7 @@ Return
 ; Win+Backspace -> Neovim
 #Backspace::
     Sleep, 150
-    Run, C:\Users\%A_UserName%\AppData\Local\Microsoft\WindowsApps\wt.exe -p Neovim
+    Run, C:\Users\%A_UserName%\AppData\Local\Microsoft\WindowsApps\wt.exe -p Neovim -d C:\Users\%A_UserName%
 Return
 
 ; Win+N -> Microsoft Edge

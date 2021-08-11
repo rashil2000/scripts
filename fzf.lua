@@ -1,4 +1,4 @@
-local fzf_command = 'fzf.exe --height 40% --exact --no-sort --reverse --cycle'
+local fzf_command = 'fzf.exe --height 40%'
 
 local clink_command
 local clink_alias = os.getalias("clink")

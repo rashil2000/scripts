@@ -13,9 +13,7 @@ public class DeskWall
 
 $ThemeRegistry = "HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\Themes\Personalize"
 $WTSettings = "$Env:LOCALAPPDATA\Packages\Microsoft.WindowsTerminalPreview_8wekyb3d8bbwe\LocalState\settings.json"
-$NPPSettings = "$Env:APPDATA\Notepad++\config.xml"
-$MSettings = "$Env:USERPROFILE\.config\mintty\config"
-$GSettings = "$Env:USERPROFILE\.gitconfig"
+$GSettings = "$Env:USERPROFILE\.config\git\config"
 
 $CheckWall = Get-ItemProperty `
   -Path 'HKCU:\Control Panel\Desktop\' `
@@ -55,36 +53,18 @@ if (!$CheckTheme.AppsUseLightTheme) {
   # Windows Terminal
   Set-Content `
     -Path $WTSettings `
-    -Value (Get-Content $WTSettings).Replace('"colorScheme": "Tango Dark"', '"colorScheme": "Tango Light"')
-  Set-Content `
-    -Path $WTSettings `
-    -Value (Get-Content $WTSettings).Replace('"colorScheme": "Campbell"', '"colorScheme": "some-light"')
-  Set-Content `
-    -Path $WTSettings `
-    -Value (Get-Content $WTSettings).Replace('"colorScheme": "Bluloco Dark"', '"colorScheme": "Bluloco Light"')
-  Set-Content `
-    -Path $WTSettings `
-    -Value (Get-Content $WTSettings).Replace('"colorScheme": "Ayu Dark"', '"colorScheme": "Ayu Light"')
-
-  # Notepad++
-  Set-Content `
-    -Path $NPPSettings `
-    -Value (Get-Content $NPPSettings).Replace("<GUIConfig name=`"stylerTheme`" path=`"$Env:APPDATA\Notepad++\themes\DarkModeDefault.xml`" />", "<GUIConfig name=`"stylerTheme`" path=`"$Env:APPDATA\Notepad++\stylers.xml`" />")
-  Set-Content `
-    -Path $NPPSettings `
-    -Value (Get-Content $NPPSettings).Replace('<GUIConfig name="DarkMode" enable="yes" enableExperimental="yes" enableMenubar="yes" enableScrollbarHack="yes" />', '<GUIConfig name="DarkMode" enable="no" enableExperimental="no" enableMenubar="no" enableScrollbarHack="no" />')
-
-  # Mintty
-  Set-Content `
-    -Path $MSettings `
-    -Value (Get-Content $MSettings).Replace("ThemeFile=windows10", "ThemeFile=google-light")
+    -Value ((Get-Content $WTSettings).
+        Replace('"theme": "dark"', '"theme": "light"').
+        Replace('"colorScheme": "Tango Dark"', '"colorScheme": "Tango Light"').
+        Replace('"colorScheme": "Campbell"', '"colorScheme": "some-light"').
+        Replace('"colorScheme": "Bluloco Dark"', '"colorScheme": "Bluloco Light"').
+        Replace('"tabColor": "#0f1419"', '"tabColor": "#fafafa"'))
 
   # Git
   Set-Content `
     -Path $GSettings `
     -Value (Get-Content $GSettings).Replace("decorations calochortus-lyallii", "decorations hoopoe")
-}
-else {
+} else {
   # Wallpaper
   if ($CheckWall.WallPaper -ne "$Env:DATA_DIR\Pictures\Wallpapers\bliss_windows_night.jpg") {
     [DeskWall]::SystemParametersInfo(0x0014, 0, "$Env:DATA_DIR\Pictures\Wallpapers\bliss_windows_night.jpg", 0x03) | Out-Null
@@ -115,29 +95,12 @@ else {
   # Windows Terminal
   Set-Content `
     -Path $WTSettings `
-    -Value (Get-Content $WTSettings).Replace('"colorScheme": "Tango Light"', '"colorScheme": "Tango Dark"')
-  Set-Content `
-    -Path $WTSettings `
-    -Value (Get-Content $WTSettings).Replace('"colorScheme": "some-light"', '"colorScheme": "Campbell"')
-  Set-Content `
-    -Path $WTSettings `
-    -Value (Get-Content $WTSettings).Replace('"colorScheme": "Bluloco Light"', '"colorScheme": "Bluloco Dark"')
-  Set-Content `
-    -Path $WTSettings `
-    -Value (Get-Content $WTSettings).Replace('"colorScheme": "Ayu Light"', '"colorScheme": "Ayu Dark"')
-
-  # Notepad++
-  Set-Content `
-    -Path $NPPSettings `
-    -Value (Get-Content $NPPSettings).Replace("<GUIConfig name=`"stylerTheme`" path=`"$Env:APPDATA\Notepad++\stylers.xml`" />", "<GUIConfig name=`"stylerTheme`" path=`"$Env:APPDATA\Notepad++\themes\DarkModeDefault.xml`" />")
-  Set-Content `
-    -Path $NPPSettings `
-    -Value (Get-Content $NPPSettings).Replace('<GUIConfig name="DarkMode" enable="no" enableExperimental="no" enableMenubar="no" enableScrollbarHack="no" />', '<GUIConfig name="DarkMode" enable="yes" enableExperimental="yes" enableMenubar="yes" enableScrollbarHack="yes" />')
-
-  # Mintty
-  Set-Content `
-    -Path $MSettings `
-    -Value (Get-Content $MSettings).Replace("ThemeFile=google-light", "ThemeFile=windows10")
+    -Value ((Get-Content $WTSettings).
+        Replace('"theme": "light"', '"theme": "dark"').
+        Replace('"colorScheme": "Tango Light"', '"colorScheme": "Tango Dark"').
+        Replace('"colorScheme": "some-light"', '"colorScheme": "Campbell"').
+        Replace('"colorScheme": "Bluloco Light"', '"colorScheme": "Bluloco Dark"').
+        Replace('"tabColor": "#fafafa"', '"tabColor": "#0f1419"'))
 
   # Git
   Set-Content `
