@@ -1,4 +1,4 @@
-#!/c/WINDOWS/System32/WindowsPowerShell/v1.0/powershell
+#!pwsh
 <#PSScriptInfo
 .VERSION 1.0
 .GUID 410c7a68-d6f3-4a81-b86a-063ac0b6616d

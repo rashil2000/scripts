@@ -1,4 +1,4 @@
-#!/c/WINDOWS/System32/WindowsPowerShell/v1.0/powershell
+#!pwsh
 
 # Script for toggling theme settings for system, apps, and tools.
 # Handles:

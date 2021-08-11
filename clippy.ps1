@@ -1,4 +1,4 @@
-#!/c/WINDOWS/System32/WindowsPowerShell/v1.0/powershell
+#!pwsh
 
 # A cute little script to show the current weather information
 
