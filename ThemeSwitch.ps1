@@ -1,5 +1,15 @@
 #!/c/WINDOWS/System32/WindowsPowerShell/v1.0/powershell
 
+# Script for toggling theme settings for system, apps, and tools.
+# Handles:
+#   - Wallpaper
+#   - System Theme
+#   - Apps Theme
+#   - Accent color*
+#   - conhost
+#   - windowsterminal
+#   - git
+
 Add-Type -TypeDefinition @"
 using System;
 using System.Runtime.InteropServices;

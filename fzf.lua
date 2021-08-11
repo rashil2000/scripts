@@ -1,3 +1,5 @@
+-- Enable history search and file search through Fzf for cmd and clink
+
 local fzf_command = 'fzf.exe --height 40%'
 
 local clink_command

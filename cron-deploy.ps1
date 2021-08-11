@@ -1,5 +1,12 @@
 #!/usr/bin/pwsh
 
+# This script runs through an hourly cron job.
+# It checks for any new commits on remote, pulls them in
+# if they are ahead, and restarts the production server
+# with the updated codebase.
+# Also, a notification regarding the latest changes is
+# sent on a dedicated Slack channel.
+
 Set-Location ~/blogger/
 
 /usr/bin/git remote update

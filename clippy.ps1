@@ -1,5 +1,7 @@
 #!/c/WINDOWS/System32/WindowsPowerShell/v1.0/powershell
 
+# A cute little script to show the current weather information
+
 $e = [char]0x1B
 $linehere = try {
     $texthere = (Invoke-RestMethod wttr.in/?format=%f`,%l).TrimStart('+').Split(',')

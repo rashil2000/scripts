@@ -1,3 +1,5 @@
+; Display keys' raw scan codes
+
 SetFormat, Integer, Hex
 Gui +ToolWindow -SysMenu +AlwaysOnTop
 Gui, Font, s14 Bold, Arial
