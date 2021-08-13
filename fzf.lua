@@ -38,7 +38,16 @@ function fzf_history(rl_buffer)
 end
 
 function fzf_file(rl_buffer)
-    local r = io.popen(fzf_command)
+    local ctrl_t_opts = os.getenv('FZF_CTRL_T_OPTS')
+    if not ctrl_t_opts then
+        ctrl_t_opts = ""
+    end
+    local final_command = fzf_command..' '..ctrl_t_opts
+    local ctrl_t_command = os.getenv('FZF_CTRL_T_COMMAND')
+    if ctrl_t_command and ctrl_t_command ~= "" then
+        final_command = ctrl_t_command..' | '..final_command
+    end
+    local r = io.popen(final_command)
     if not r then
         rl_buffer:ding()
         return
