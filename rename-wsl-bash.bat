@@ -8,6 +8,8 @@ if %errorlevel% == 0 (
   takeown /F C:\Windows\System32\bash.exe
   echo INFO: Modifying discretionary access control list for bash executable to give administrator full access
   icacls C:\Windows\System32\bash.exe /grant administrators:F
+  echo INFO: Deleting previous wsl-bash executable ^(if exists^)
+  del C:\Windows\System32\wsl-bash.exe
   echo INFO: Renaming to wsl-bash
   ren C:\Windows\System32\bash.exe wsl-bash.exe
 
