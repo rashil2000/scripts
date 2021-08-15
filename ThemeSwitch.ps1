@@ -34,8 +34,8 @@ $CheckTheme = Get-ItemProperty `
 
 if (!$CheckTheme.AppsUseLightTheme) {
   # Wallpaper
-  if ($CheckWall.WallPaper -ne "$Env:DATA_DIR\Pictures\Wallpapers\bliss-windows-day.jpg") {
-    [DeskWall]::SystemParametersInfo(0x0014, 0, "$Env:DATA_DIR\Pictures\Wallpapers\bliss-windows-day.jpg", 0x03) | Out-Null
+  if ($CheckWall.WallPaper -ne "$Env:USERPROFILE\Pictures\Wallpapers\bliss-windows-day.jpg") {
+    [DeskWall]::SystemParametersInfo(0x0014, 0, "$Env:USERPROFILE\Pictures\Wallpapers\bliss-windows-day.jpg", 0x03) | Out-Null
   }
 
   # System
@@ -76,8 +76,8 @@ if (!$CheckTheme.AppsUseLightTheme) {
     -Value (Get-Content $GSettings).Replace("decorations calochortus-lyallii", "decorations hoopoe")
 } else {
   # Wallpaper
-  if ($CheckWall.WallPaper -ne "$Env:DATA_DIR\Pictures\Wallpapers\bliss_windows_night.jpg") {
-    [DeskWall]::SystemParametersInfo(0x0014, 0, "$Env:DATA_DIR\Pictures\Wallpapers\bliss_windows_night.jpg", 0x03) | Out-Null
+  if ($CheckWall.WallPaper -ne "$Env:USERPROFILE\Pictures\Wallpapers\bliss_windows_night.jpg") {
+    [DeskWall]::SystemParametersInfo(0x0014, 0, "$Env:USERPROFILE\Pictures\Wallpapers\bliss_windows_night.jpg", 0x03) | Out-Null
   }
 
   # System

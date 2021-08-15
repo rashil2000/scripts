@@ -11,7 +11,7 @@
 .PARAMETER ProjectLocation
   The location of the project folder
 .EXAMPLE
-  WarpSSH PowerShell "$Env:DATA_DIR\Projects\Premiere Pro\WarpSSH"
+  WarpSSH PowerShell "~\Projects\Premiere Pro\WarpSSH"
 .NOTES
   Written By: rashil2000
 #>

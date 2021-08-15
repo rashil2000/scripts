@@ -63,7 +63,7 @@ param(
   [Switch]$ForceUpdate = $false
 )
 
-$DBFile = "$Env:DATA_DIR\Projects\Random\scoop_directory.db"
+$DBFile = "~\Projects\Random\scoop_directory.db"
 
 if ($Table -eq 'bucket') {
   if (!($Bucket_Repo)) {
