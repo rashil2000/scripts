@@ -1,3 +1,5 @@
+#!/usr/bin/bash
+
 # Theme Switcher for Xfce on Kali
 
 current=$(xfconf-query -c xsettings -p /Net/ThemeName)

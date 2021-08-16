@@ -1,4 +1,4 @@
-#!pwsh
+#!/usr/bin/env pwsh
 
 # A cute little script to show GitHub notifications on the terminal.
 # Requires an access token to be stored in PowerShell's secret vault.

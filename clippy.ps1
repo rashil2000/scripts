@@ -1,4 +1,4 @@
-#!pwsh
+#!/usr/bin/env pwsh
 
 # A cute little script to show the current weather information
 

@@ -1,4 +1,4 @@
-#!/usr/bin/pwsh
+#!/usr/bin/env pwsh
 
 # This script runs through an hourly cron job.
 # It checks for any new commits on remote, pulls them in
