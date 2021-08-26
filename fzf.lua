@@ -1,4 +1,4 @@
--- Enable history search and file search through Fzf for cmd and clink
+-- Enable fzf standard keybindings for cmd and clink
 
 local fzf_command = 'fzf.exe --height 40%'
 
@@ -12,12 +12,16 @@ end
 
 
 function fzf_history(rl_buffer)
+    local ctrl_r_opts = os.getenv('FZF_CTRL_R_OPTS')
+    if not ctrl_r_opts then
+        ctrl_r_opts = ""
+    end
     local temp_contents = rl_buffer:getbuffer()
     if #clink_command == 0 then
         rl_buffer:ding()
         return
     end
-    local r = io.popen('"'..clink_command..' history --bare | '..fzf_command..' -i --tac --query="'..temp_contents..'""')
+    local r = io.popen('"'..clink_command..' history --bare | '..fzf_command..' '..ctrl_r_opts..' -i --tac --query="'..temp_contents..'""')
     if not r then
         rl_buffer:ding()
         return
@@ -42,12 +46,11 @@ function fzf_file(rl_buffer)
     if not ctrl_t_opts then
         ctrl_t_opts = ""
     end
-    local final_command = fzf_command..' '..ctrl_t_opts
     local ctrl_t_command = os.getenv('FZF_CTRL_T_COMMAND')
-    if ctrl_t_command and ctrl_t_command ~= "" then
-        final_command = ctrl_t_command..' | '..final_command
+    if not ctrl_t_command then
+        ctrl_t_command = "dir /b /s /a:-s"
     end
-    local r = io.popen(final_command)
+    local r = io.popen(ctrl_t_command..' | '..fzf_command..' '..ctrl_t_opts)
     if not r then
         rl_buffer:ding()
         return
@@ -58,4 +61,36 @@ function fzf_file(rl_buffer)
         rl_buffer:insert(str)
     end
     rl_buffer:refreshline()
+end
+
+function fzf_directory(rl_buffer)
+    local alt_c_opts = os.getenv('FZF_ALT_C_OPTS')
+    if not alt_c_opts then
+        alt_c_opts = ""
+    end
+    local alt_c_command = os.getenv('FZF_ALT_C_COMMAND')
+    if not alt_c_command then
+        alt_c_command = "dir /b /s /a:d-s"
+    end
+    local temp_contents = rl_buffer:getbuffer()
+    local r = io.popen('"'..alt_c_command..' | '..fzf_command..' '..alt_c_opts..' -i --query="'..temp_contents..'""')
+    if not r then
+        rl_buffer:ding()
+        return
+    end
+    local str = r:read('*all')
+    r:close()
+
+    str = str:gsub("[\r\n]", "")
+    rl_buffer:beginundogroup()
+    rl_buffer:remove(0, -1)
+    if string.len(str) == 0 then
+        rl_buffer:insert(temp_contents)
+        rl_buffer:endundogroup()
+        rl_buffer:refreshline()
+    else
+        rl_buffer:insert("cd /d "..str)
+        rl_buffer:endundogroup()
+        rl.invokecommand("accept-line")
+    end
 end
