@@ -31,9 +31,8 @@ if [ $current = "Kali-Dark" ]; then
   sed -i -e 's/141e24/FFFFFF/g' ~/.mozilla/firefox/9xtl5lta.default-esr/chrome/userContent.css
   sed -i -e 's/darkslategrey/#FFFFFE/g' ~/.mozilla/firefox/9xtl5lta.default-esr/chrome/userContent.css
 
-  # VIm
-  sed -i -e 's/\"dark\"/\"light\"/g' ~/.config/nvim/init.vim
-  sed -i -e 's/\"ayu_dark\"/\"ayu_light\"/g' ~/.config/nvim/init.vim
+  # Git
+  sed -i -e 's/decorations\ calochortus-lyallii/decorations\ hoopoe/g' ~/.config/git/config
 
 else
   # Dark Theme
@@ -62,8 +61,7 @@ else
   sed -i -e 's/FFFFFF/141e24/g' ~/.mozilla/firefox/9xtl5lta.default-esr/chrome/userContent.css
   sed -i -e 's/#FFFFFE/darkslategrey/g' ~/.mozilla/firefox/9xtl5lta.default-esr/chrome/userContent.css
 
-  # VIm
-  sed -i -e 's/\"light\"/\"dark\"/g' ~/.config/nvim/init.vim
-  sed -i -e 's/\"ayu_light\"/\"ayu_dark\"/g' ~/.config/nvim/init.vim
+  # Git
+  sed -i -e 's/decorations\ hoopoe/decorations\ calochortus-lyallii/g' ~/.config/git/config
 
 fi
