@@ -68,7 +68,7 @@ if (!$CheckTheme.AppsUseLightTheme) {
         Replace('"colorScheme": "Tango Dark"', '"colorScheme": "Tango Light"').
         Replace('"colorScheme": "Campbell"', '"colorScheme": "some-light"').
         Replace('"colorScheme": "Bluloco Dark"', '"colorScheme": "Bluloco Light"').
-        Replace('"tabColor": "#0f1419"', '"tabColor": "#fafafa"'))
+        Replace('"tabColor": "#282c34"', '"tabColor": "#f9f9f9"'))
 
   # Git
   Set-Content `
@@ -110,7 +110,7 @@ if (!$CheckTheme.AppsUseLightTheme) {
         Replace('"colorScheme": "Tango Light"', '"colorScheme": "Tango Dark"').
         Replace('"colorScheme": "some-light"', '"colorScheme": "Campbell"').
         Replace('"colorScheme": "Bluloco Light"', '"colorScheme": "Bluloco Dark"').
-        Replace('"tabColor": "#fafafa"', '"tabColor": "#0f1419"'))
+        Replace('"tabColor": "#f9f9f9"', '"tabColor": "#282c34"'))
 
   # Git
   Set-Content `

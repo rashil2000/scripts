@@ -1,7 +1,5 @@
 -- Enable fzf standard keybindings for cmd and clink
 
-local fzf_command = 'fzf.exe --height 40%'
-
 local clink_command
 local clink_alias = os.getalias("clink")
 if not clink_alias or clink_alias == "" then
@@ -21,7 +19,7 @@ function fzf_history(rl_buffer)
         rl_buffer:ding()
         return
     end
-    local r = io.popen('"'..clink_command..' history --bare | '..fzf_command..' '..ctrl_r_opts..' -i --tac --query="'..temp_contents..'""')
+    local r = io.popen('"'..clink_command..' history --bare | fzf.exe '..ctrl_r_opts..' -i --tac --query="'..temp_contents..'""')
     if not r then
         rl_buffer:ding()
         return
@@ -50,7 +48,7 @@ function fzf_file(rl_buffer)
     if not ctrl_t_command then
         ctrl_t_command = "dir /b /s /a:-s"
     end
-    local r = io.popen(ctrl_t_command..' | '..fzf_command..' '..ctrl_t_opts)
+    local r = io.popen(ctrl_t_command..' | fzf.exe '..ctrl_t_opts)
     if not r then
         rl_buffer:ding()
         return
@@ -73,7 +71,7 @@ function fzf_directory(rl_buffer)
         alt_c_command = "dir /b /s /a:d-s"
     end
     local temp_contents = rl_buffer:getbuffer()
-    local r = io.popen('"'..alt_c_command..' | '..fzf_command..' '..alt_c_opts..' -i --query="'..temp_contents..'""')
+    local r = io.popen('"'..alt_c_command..' | fzf.exe '..alt_c_opts..' -i --query="'..temp_contents..'""')
     if not r then
         rl_buffer:ding()
         return
