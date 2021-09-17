@@ -9,8 +9,20 @@ param(
 # To learn more about startup files, refer to your shell's man page.
 
 $Env:MSYS2_PATH = "$Msys2Root\usr\local\bin;$Msys2Root\usr\bin;$Msys2Root\bin"
-$Env:MANPATH = "$Msys2Root\usr\local\man;$Msys2Root\usr\share\man;$Msys2Root\usr\man;$Msys2Root\share\man"
+$Env:MANPATH = '/usr/local/man:/usr/share/man:/usr/man:/share/man'
 $Env:INFOPATH = "$Msys2Root\usr\local\info;$Msys2Root\usr\share\info;$Msys2Root\usr\info;$Msys2Root\share\info"
+
+# manpage colors
+$e = [char]0x1b
+$Env:LESS_TERMCAP_mb="$e[1;31m"  # begin blink
+$Env:LESS_TERMCAP_md="$e[1;36m"  # begin bold
+$Env:LESS_TERMCAP_me="$e[0m"     # reset bold/blink
+$Env:LESS_TERMCAP_so="$e[01;33m" # begin reverse video
+$Env:LESS_TERMCAP_se="$e[0m"     # reset reverse video
+$Env:LESS_TERMCAP_us="$e[1;32m"  # begin underline
+$Env:LESS_TERMCAP_ue="$e[0m"     # reset underline
+# colored GCC warnings and errors
+$Env:GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quote=01'
 
 # MSYSTEM Environment Information
 # Copyright (C) 2016 Renato Silva

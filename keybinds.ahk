@@ -31,6 +31,12 @@ Return
     Run, C:\Users\%A_UserName%\AppData\Local\Microsoft\WindowsApps\wt.exe -p Neovim -d C:\Users\%A_UserName%
 Return
 
+; Win+Backslash -> Vifm
+#\::
+    Sleep, 150
+    Run, C:\Users\%A_UserName%\AppData\Local\Microsoft\WindowsApps\wt.exe -p Vifm
+Return
+
 ; Win+N -> Microsoft Edge
 #n::
     Run, C:\Program Files (x86)\Microsoft\Edge\Application\msedge.exe

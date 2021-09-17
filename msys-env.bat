@@ -12,8 +12,21 @@ if "%2"=="" (
 :: To learn more about startup files, refer to your shell's man page.
 
 set MSYS2_PATH=%Msys2Root%\usr\local\bin;%Msys2Root%\usr\bin;%Msys2Root%\bin
-set MANPATH=%Msys2Root%\usr\local\man;%Msys2Root%\usr\share\man;%Msys2Root%\usr\man;%Msys2Root%\share\man
+set MANPATH=/usr/local/man:/usr/share/man:/usr/man:/share/man
 set INFOPATH=%Msys2Root%\usr\local\info;%Msys2Root%\usr\share\info;%Msys2Root%\usr\info;%Msys2Root%\share\info
+
+:: manpage colors
+for /f "tokens=1,2 delims=#" %%a in ('"prompt #$H#$E# & echo on & for %%b in (1) do rem"') do set E=%%b
+set LESS_TERMCAP_mb=%E%[1;31m
+set LESS_TERMCAP_md=%E%[1;36m
+set LESS_TERMCAP_me=%E%[0m
+set LESS_TERMCAP_so=%E%[01;33m
+set LESS_TERMCAP_se=%E%[0m
+set LESS_TERMCAP_us=%E%[1;32m
+set LESS_TERMCAP_ue=%E%[0m
+set E=
+:: colored GCC warnings and errors
+set GCC_COLORS=error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quote=01
 
 :: MSYSTEM Environment Information
 :: Copyright (C) 2016 Renato Silva
