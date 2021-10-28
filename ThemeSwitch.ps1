@@ -24,6 +24,7 @@ public class DeskWall
 $ThemeRegistry = "HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\Themes\Personalize"
 $WTSettings = "$Env:LOCALAPPDATA\Packages\Microsoft.WindowsTerminalPreview_8wekyb3d8bbwe\LocalState\settings.json"
 $GSettings = "$Env:USERPROFILE\.config\git\config"
+. $PSScriptRoot\Nice\WallConfig.ps1
 
 $CheckWall = Get-ItemProperty `
   -Path 'HKCU:\Control Panel\Desktop\' `
@@ -34,8 +35,8 @@ $CheckTheme = Get-ItemProperty `
 
 if (!$CheckTheme.AppsUseLightTheme) {
   # Wallpaper
-  if ($CheckWall.WallPaper -ne "$Env:USERPROFILE\Pictures\Wallpapers\bliss-windows-day.jpg") {
-    [DeskWall]::SystemParametersInfo(0x0014, 0, "$Env:USERPROFILE\Pictures\Wallpapers\bliss-windows-day.jpg", 0x03) | Out-Null
+  if ($CheckWall.WallPaper -ne $WallPaper_Light) {
+    [DeskWall]::SystemParametersInfo(0x0014, 0, $WallPaper_Light, 0x03) | Out-Null
   }
 
   # System
@@ -76,8 +77,8 @@ if (!$CheckTheme.AppsUseLightTheme) {
     -Value (Get-Content $GSettings).Replace("decorations calochortus-lyallii", "decorations hoopoe")
 } else {
   # Wallpaper
-  if ($CheckWall.WallPaper -ne "$Env:USERPROFILE\Pictures\Wallpapers\bliss_windows_night.jpg") {
-    [DeskWall]::SystemParametersInfo(0x0014, 0, "$Env:USERPROFILE\Pictures\Wallpapers\bliss_windows_night.jpg", 0x03) | Out-Null
+  if ($CheckWall.WallPaper -ne $WallPaper_Dark) {
+    [DeskWall]::SystemParametersInfo(0x0014, 0, $WallPaper_Dark, 0x03) | Out-Null
   }
 
   # System

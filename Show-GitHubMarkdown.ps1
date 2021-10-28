@@ -43,7 +43,7 @@ param(
     [string]$HtmlFile
 )
 
-$TemplateFile = 'Nice/template.html'
+$TemplateFile = "$PSScriptRoot/Nice/template.html"
 
 $ConvertedHtml = if ($UseNative) {
     (ConvertFrom-Markdown $MarkdownFile).Html

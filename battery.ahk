@@ -12,7 +12,7 @@ SetTitleMatchMode 2
 percentage := "%"
 sleepTime := 300 * 1000 ; Delay in milliseconds
 maxCharge := 85 ; Maximum charging percentage
-; minCharge := 10 ; Minimum charging percentage
+minCharge := 15 ; Minimum charging percentage
 
 Loop{ ; Loop forever
 
@@ -33,14 +33,12 @@ Loop{ ; Loop forever
     }
   }
 
-	/*
   if (batteryChargePercent < minCharge){ ; Is the battery charged less than `minCharge`
     if (acLineStatus == 0){ ; Only alert if the power lead is not connected
       output=Plug the charger.`nBattery Charge Level: %batteryChargePercent%%percentage%
       notifyUser(output)
     }
   }
-  */
 
   sleep, sleepTime
 }
