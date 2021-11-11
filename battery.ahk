@@ -11,8 +11,8 @@ SetTitleMatchMode 2
 
 percentage := "%"
 sleepTime := 300 * 1000 ; Delay in milliseconds
-maxCharge := 85 ; Maximum charging percentage
-minCharge := 15 ; Minimum charging percentage
+maxCharge := 80 ; Maximum charging percentage
+minCharge := 20 ; Minimum charging percentage
 
 Loop{ ; Loop forever
 
