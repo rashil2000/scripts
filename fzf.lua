@@ -92,3 +92,7 @@ function fzf_directory(rl_buffer)
         rl.invokecommand("accept-line")
     end
 end
+
+rl.setbinding([["\C-t"]], [["luafunc:fzf_file"]])
+rl.setbinding([["\C-r"]], [["luafunc:fzf_history"]])
+rl.setbinding([["\M-c"]], [["luafunc:fzf_directory"]])

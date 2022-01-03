@@ -62,7 +62,7 @@ Return
 {
     ; Ctrl+Shift+1 -> GitHub
     ^+1::
-        Run https://github.com/notifications
+        Run https://github.com
     Return
 
     ; Ctrl+Shift+2 -> Twitter
@@ -87,6 +87,6 @@ Return
 
     ; Ctrl+Shift+6 -> Reddit
     ^+6::
-        Run https://reddit.com
+        Run https://youtube.com
     Return
 }
