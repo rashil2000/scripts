@@ -1,4 +1,4 @@
-#!/usr/bin/env pwsh
+#!/usr/bin/env -S pwsh -nop
 
 # Script for toggling theme settings for system, apps, and tools.
 # Handles:
