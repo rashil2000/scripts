@@ -47,6 +47,11 @@ Return
     Run, C:\Users\%A_UserName%\Scoop\apps\jcpicker\current\jcpicker.exe
 Return
 
+; Win+Shift+G -> Screen To Gif
+#+g::
+    Run, C:\Users\%A_UserName%\Scoop\apps\screentogif\current\screentogif.exe /open screen
+Return
+
 ; Ctrl+Alt+RightClick -> Toggle transparency for any window
 ^!RButton::
     WinGet, currentTransparency, Transparent, A
