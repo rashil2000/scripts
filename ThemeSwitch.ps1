@@ -1,11 +1,14 @@
 #!/usr/bin/env -S pwsh -nop
 
+$GSettings = "~/.config/git/config"
+. $PSScriptRoot/Nice/WallConfig.ps1
+
 # Script for toggling theme settings for system, apps, and tools.
 # Handles:
 #   - Wallpaper
 #   - System Theme
 #   - Apps Theme
-#   - Accent color*
+#   - Titlebar and window borders
 #   - conhost
 #   - windowsterminal
 #   - git
@@ -23,9 +26,6 @@ public class DeskWall
 
 $ThemeRegistry = "HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\Themes\Personalize"
 $WTSettings = "$Env:LOCALAPPDATA\Packages\Microsoft.WindowsTerminalPreview_8wekyb3d8bbwe\LocalState\settings.json"
-$GSettings = "$Env:USERPROFILE\.config\git\config"
-. $PSScriptRoot\Nice\WallConfig.ps1
-
 $CheckWall = Get-ItemProperty `
   -Path 'HKCU:\Control Panel\Desktop\' `
   -Name WallPaper
@@ -51,12 +51,11 @@ if (!$CheckTheme.AppsUseLightTheme) {
     -Name AppsUseLightTheme `
     -Value 1
 
-  # Accent Colour
-  <# Set-ItemProperty `
+  # Titlebar and window borders
+  Set-ItemProperty `
     -Path HKCU:\SOFTWARE\Microsoft\Windows\DWM `
-    -Name AccentColor `
-    -Type DWord `
-    -Value 4294967295 #>
+    -Name ColorPrevalence `
+    -Value 0
 
   # Windows Console
   colortool -b some-light.ini
@@ -93,12 +92,11 @@ if (!$CheckTheme.AppsUseLightTheme) {
     -Name AppsUseLightTheme `
     -Value 0
 
-  # Accent Colour
-  <# Set-ItemProperty `
+  # Titlebar and window borders
+  Set-ItemProperty `
     -Path HKCU:\SOFTWARE\Microsoft\Windows\DWM `
-    -Name AccentColor `
-    -Type DWord `
-    -Value 4278190080 #>
+    -Name ColorPrevalence `
+    -Value 1
 
   # Windows Console
   colortool -b campbell.ini
