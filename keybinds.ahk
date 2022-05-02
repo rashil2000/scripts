@@ -37,19 +37,19 @@ Return
     Run, C:\Users\%A_UserName%\AppData\Local\Microsoft\WindowsApps\wt.exe -p Vifm
 Return
 
-; Win+N -> Microsoft Edge
-#n::
+; Win+Q -> Microsoft Edge
+#q::
     Run, C:\Program Files (x86)\Microsoft\Edge\Application\msedge.exe
 Return
 
 ; Win+Shift+C -> Just Color Picker
 #+c::
-    Run, C:\Users\%A_UserName%\Scoop\apps\jcpicker\current\jcpicker.exe
+    Run, %SCOOP%\apps\jcpicker\current\jcpicker.exe
 Return
 
 ; Win+Shift+G -> Screen To Gif
 #+g::
-    Run, C:\Users\%A_UserName%\Scoop\apps\screentogif\current\screentogif.exe /open screen
+    Run, %SCOOP%\apps\screentogif\current\screentogif.exe /open screen
 Return
 
 ; Ctrl+Alt+RightClick -> Toggle transparency for any window
@@ -65,9 +65,9 @@ Return
 ; Inside Chromium applications
 #IfWinActive ahk_class Chrome_WidgetWin_1
 {
-    ; Ctrl+Shift+1 -> GitHub
+    ; Ctrl+Shift+1 -> GitHub Notifications
     ^+1::
-        Run https://github.com
+        Run https://github.com/notifications
     Return
 
     ; Ctrl+Shift+2 -> Twitter
@@ -85,13 +85,13 @@ Return
         Run https://teams.microsoft.com
     Return
 
-    ; Ctrl+Shift+5 -> HackerNews
+    ; Ctrl+Shift+5 -> YouTube
     ^+5::
-        Run https://news.ycombinator.com
+        Run https://youtube.com
     Return
 
     ; Ctrl+Shift+6 -> Reddit
     ^+6::
-        Run https://youtube.com
+        Run https://reddit.com
     Return
 }

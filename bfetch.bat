@@ -5,7 +5,7 @@ for /f "tokens=1,2 delims=#" %%a in ('"prompt #$H#$E# & echo on & for %%b in (1)
 
 for /f "tokens=1,* delims== usebackq" %%a in (`wmic computersystem get model /format:list ^| findstr "^Model="`) do set %%a=%%b
 
-for /f "tokens=* usebackq" %%f in (`dir %UserProfile%\scoop\apps\ ^| find /c "<DIR>"`) do set /a scoop_pkgs=%%f - 3
+for /f "tokens=* usebackq" %%f in (`dir "%SCOOP%\apps\" ^| find /c "<DIR>"`) do set /a scoop_pkgs=%%f - 3
 for /f "tokens=* usebackq" %%f in (`cargo install --list ^| find /c ":"`) do set cargo_pkgs=%%f
 
 set count=1
