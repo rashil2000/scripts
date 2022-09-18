@@ -1,6 +1,6 @@
 param(
   [String]$EnvName,
-  [String]$Msys2Root = 'D:\Msys2'
+  [String]$Msys2Root = 'E:\Msys2'
 )
 
 # Setup some default paths. Note that this order will allow user installed

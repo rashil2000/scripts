@@ -1,7 +1,7 @@
 @echo OFF
 
 if "%2"=="" (
-   set Msys2Root=D:\Msys2
+   set Msys2Root=E:\Msys2
 ) else (
    set Msys2Root=%2
 )
