@@ -1,16 +1,16 @@
 #!/data/data/com.termux/files/usr/bin/bash
 
-rm ~/.termux/colors.properties
-cd ~/GitHub/rashil2000/scripts/Nice
-theme=$(cat current)
-if [ $theme == "dark" ] ; then
-  cp one-light ~/.termux/colors.properties
-  echo 'light' | tee current > /dev/null
+pushd ~/.termux
+rm colors.properties
+
+if grep -Fxq "use-black-ui = true" termux.properties ; then
+  cp google-light.properties colors.properties
+  sed -i -e 's/use-black-ui\ =\ true/use-black-ui\ =\ false/g' termux.properties
   termux-reload-settings
-  sed -i -e 's/decorations\ calochortus-lyallii/decorations\ hoopoe/g' ~/.config/git/config
 else
-  cp default ~/.termux/colors.properties
-  echo 'dark' | tee current > /dev/null
+  cp google-dark.properties colors.properties
+  sed -i -e 's/use-black-ui\ =\ false/use-black-ui\ =\ true/g' termux.properties
   termux-reload-settings
-  sed -i -e 's/decorations\ hoopoe/decorations\ calochortus-lyallii/g' ~/.config/git/config
 fi
+
+popd
