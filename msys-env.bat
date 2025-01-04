@@ -64,13 +64,6 @@ if "%MSYSTEM%"=="MINGW32" (
     set MINGW_CHOST=x86_64-w64-mingw32
     set MINGW_PREFIX=%Msys2Root%\mingw64
     set MINGW_PACKAGE_PREFIX=mingw-w64-x86_64
-) else if "%MSYSTEM%"=="CLANG32" (
-    set MSYSTEM_PREFIX=%Msys2Root%\clang32
-    set MSYSTEM_CARCH=i686
-    set MSYSTEM_CHOST=i686-w64-mingw32
-    set MINGW_CHOST=i686-w64-mingw32
-    set MINGW_PREFIX=%Msys2Root%\clang32
-    set MINGW_PACKAGE_PREFIX=mingw-w64-clang-i686
 ) else if "%MSYSTEM%"=="CLANG64" (
     set MSYSTEM_PREFIX=%Msys2Root%\clang64
     set MSYSTEM_CARCH=x86_64
@@ -96,7 +89,7 @@ if "%MSYSTEM%"=="MINGW32" (
     set MSYSTEM=MSYS
     set MSYSTEM_PREFIX=%Msys2Root%\usr
     for /f "tokens=* usebackq" %%f in (`%Msys2Root%\usr\bin\uname -m`) do set MSYSTEM_CARCH=%%f
-    for /f "tokens=* usebackq" %%f in (`%Msys2Root%\usr\bin\uname -m`) do set MSYSTEM_CHOST=%%f-pc-msys
+    set MSYSTEM_CHOST=%MSYSTEM_CARCH%-pc-msys
 )
 
 if "%MSYSTEM%"=="MSYS" (
@@ -106,8 +99,11 @@ if "%MSYSTEM%"=="MSYS" (
     set MINGW_MOUNT_POINT=%MINGW_PREFIX%
     set "PATH=%MINGW_PREFIX%\bin;%MSYS2_PATH%;%PATH%"
     set PKG_CONFIG_PATH=%MINGW_PREFIX%\lib\pkgconfig;%MINGW_PREFIX%\share\pkgconfig
+    set PKG_CONFIG_SYSTEM_INCLUDE_PATH=%MINGW_PREFIX%\include
+    set PKG_CONFIG_SYSTEM_LIBRARY_PATH=%MINGW_PREFIX%\lib
     set ACLOCAL_PATH=%MINGW_PREFIX%\share\aclocal;%Msys2Root%\usr\share\aclocal
-    set MANPATH=%MINGW_PREFIX%\local\man;%MINGW_PREFIX%\share\man;%MANPATH%
+    set MANPATH=/%MSYSTEM%/local/man:/%MSYSTEM%/share/man:%MANPATH%
+    set INFOPATH=%MINGW_PREFIX%\local\info;%MINGW_PREFIX%\share\info;%INFOPATH%
 )
 
 set CONFIG_SITE=%Msys2Root%\etc\config.site
@@ -118,13 +114,6 @@ set SYSCONFDIR=%Msys2Root%\etc
 :: them set to the default Windows temporary directory or unset
 :: can have unexpected consequences for msys2 apps, so we define
 :: our own to match GNU/Linux behaviour.
-::
-:: Note: this uppercase/lowercase workaround does not seem to work.
-:: In fact, it has been removed from Cygwin some years ago. See:
-::
-::     * https://cygwin.com/git/gitweb.cgi?p=cygwin-apps/base-files.git;a=commitdiff;h=3e54b07
-::     * https://cygwin.com/git/gitweb.cgi?p=cygwin-apps/base-files.git;a=commitdiff;h=7f09aef
-::
 set TMP=%Msys2Root%\tmp
 set TEMP=%Msys2Root%\tmp
 

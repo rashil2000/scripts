@@ -64,14 +64,6 @@ switch ($Env:MSYSTEM) {
     $Env:MINGW_PREFIX = $Env:MSYSTEM_PREFIX
     $Env:MINGW_PACKAGE_PREFIX = "mingw-w64-$Env:MSYSTEM_CARCH"
   }
-  "CLANG32" {
-    $Env:MSYSTEM_PREFIX = "$Msys2Root\clang32"
-    $Env:MSYSTEM_CARCH = 'i686'
-    $Env:MSYSTEM_CHOST = 'i686-w64-mingw32'
-    $Env:MINGW_CHOST = $Env:MSYSTEM_CHOST
-    $Env:MINGW_PREFIX = $Env:MSYSTEM_PREFIX
-    $Env:MINGW_PACKAGE_PREFIX = "mingw-w64-clang-$Env:MSYSTEM_CARCH"
-  }
   "CLANG64" {
     $Env:MSYSTEM_PREFIX = "$Msys2Root\clang64"
     $Env:MSYSTEM_CARCH = 'x86_64'
@@ -109,8 +101,11 @@ switch ($Env:MSYSTEM) {
     $Env:MINGW_MOUNT_POINT = $Env:MINGW_PREFIX
     $Env:PATH = "$Env:MINGW_MOUNT_POINT\bin;$Env:MSYS2_PATH;$Env:PATH"
     $Env:PKG_CONFIG_PATH = "$Env:MINGW_MOUNT_POINT\lib\pkgconfig;$Env:MINGW_MOUNT_POINT\share\pkgconfig"
+    $Env:PKG_CONFIG_SYSTEM_INCLUDE_PATH = "$Env:MINGW_MOUNT_POINT\include"
+    $Env:PKG_CONFIG_SYSTEM_LIBRARY_PATH = "$Env:MINGW_MOUNT_POINT\lib"
     $Env:ACLOCAL_PATH = "$Env:MINGW_MOUNT_POINT\share\aclocal;$Msys2Root\usr\share\aclocal"
-    $Env:MANPATH = "$Env:MINGW_MOUNT_POINT\local\man;$Env:MINGW_MOUNT_POINT\share\man;$Env:MANPATH"
+    $Env:MANPATH = "/$Env:MSYSTEM/local/man:/$Env:MSYSTEM/share/man:$Env:MANPATH"
+    $Env:INFOPATH = "$Env:MINGW_MOUNT_POINT\local\info;$Env:MINGW_MOUNT_POINT\share\info;$Env:INFOPATH"
   }
   Default {
     $Env:PATH = "$Env:MSYS2_PATH;$Msys2Root\opt\bin;$Env:PATH"
@@ -126,13 +121,6 @@ $Env:SYSCONFDIR = "$Msys2Root\etc"
 # them set to the default Windows temporary directory or unset
 # can have unexpected consequences for msys2 apps, so we define
 # our own to match GNU/Linux behaviour.
-#
-# Note: this uppercase/lowercase workaround does not seem to work.
-# In fact, it has been removed from Cygwin some years ago. See:
-#
-#     * https://cygwin.com/git/gitweb.cgi?p=cygwin-apps/base-files.git;a=commitdiff;h=3e54b07
-#     * https://cygwin.com/git/gitweb.cgi?p=cygwin-apps/base-files.git;a=commitdiff;h=7f09aef
-#
 $Env:TMP = "$Msys2Root\tmp"
 $Env:TEMP = "$Msys2Root\tmp"
 

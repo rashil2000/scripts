@@ -7,7 +7,7 @@ $e = [char]0x1b
 $conwidth = $Host.UI.RawUI.WindowSize.Width
 
 ForEach ($res in (Invoke-RestMethod https://api.github.com/notifications `
-                    -h @{ Authorization = "Bearer $(Get-Secret GH_NOTIF_API_KEY -AsPlainText)" }))
+                    -he @{ Authorization = "Bearer $(Get-Secret GH_NOTIF_API_KEY -AsPlainText)" }))
 {
     $reponame = $res.repository.full_name
 

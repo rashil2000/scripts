@@ -75,23 +75,33 @@ Return
         Run https://twitter.com
     Return
 
-    ; Ctrl+Shift+3 -> WhatsApp
+    ; Ctrl+Shift+3 -> YouTube
     ^+3::
-        Run https://web.whatsapp.com
-    Return
-
-    ; Ctrl+Shift+4 -> Teams
-    ^+4::
-        Run https://teams.microsoft.com
-    Return
-
-    ; Ctrl+Shift+5 -> YouTube
-    ^+5::
         Run https://youtube.com
     Return
 
-    ; Ctrl+Shift+6 -> Reddit
-    ^+6::
+    ; Ctrl+Shift+4 -> Reddit
+    ^+4::
         Run https://reddit.com
+    Return
+
+    ; Ctrl+Shift+5 -> GMail
+    ^+5::
+        Run https://mail.google.com
+    Return
+
+    ; Ctrl+Shift+6 -> Yahoo Mail
+    ^+6::
+        Run https://mail.yahoo.com
+    Return
+
+    ; Ctrl+Shift+7 -> GMail (2)
+    ^+7::
+        Run https://mail.google.com/mail/u/2/
+    Return
+
+    ; Ctrl+Shift+8 -> IIT Kgp Mail
+    ^+8::
+        Run https://iitkgpmail.iitkgp.ac.in
     Return
 }
